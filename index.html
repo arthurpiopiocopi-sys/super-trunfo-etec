@@ -68,25 +68,28 @@
     </div>
   </div>
 
-  <div class="rotate-warning">
-  <img src="https://cdn-icons-png.flaticon.com/512/599/599502.png" alt="Gire o celular">
-  <p>Por favor, gire seu celular para o modo paisagem 🌟</p>
+  <!-- ===== AVISO DE ORIENTAÇÃO ===== -->
+<div id="rotate-warning">
+  <p>📱 Por favor, gire seu celular para o modo paisagem 🌟</p>
 </div>
 
 <script>
   function checkOrientation() {
-    const warning = document.querySelector('.rotate-warning');
-    if (window.innerHeight > window.innerWidth && window.innerWidth < 900) {
-      warning.style.display = 'flex';
+    const warning = document.getElementById("rotate-warning");
+    if (window.matchMedia("(orientation: portrait)").matches && window.innerWidth < 900) {
+      warning.style.display = "flex";
+      document.body.classList.add("locked");
     } else {
-      warning.style.display = 'none';
+      warning.style.display = "none";
+      document.body.classList.remove("locked");
     }
   }
 
-  window.addEventListener('resize', checkOrientation);
-  window.addEventListener('orientationchange', checkOrientation);
-  checkOrientation();
+  window.addEventListener("resize", checkOrientation);
+  window.addEventListener("orientationchange", checkOrientation);
+  window.addEventListener("load", checkOrientation);
 </script>
+
 
 
   <script src="script.js"></script>
