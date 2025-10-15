@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Trunfo - Desenhos Nostálgicos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== TELA INICIAL ===== -->
+  <section id="setup-screen" class="screen">
+    <div class="setup-container">
+      <h1 class="game-title">🎮 Super Trunfo</h1>
+      <p class="subtitle">Desenhos Nostálgicos</p>
+
+      <div class="players-setup">
+        <div class="player-input">
+          <label>Jogador 1:</label>
+          <input id="player1Name" type="text" placeholder="Digite seu nome" />
+        </div>
+
+        <span class="vs-divider">VS</span>
+
+        <div class="player-input">
+          <label>Jogador 2:</label>
+          <input id="player2Name" type="text" placeholder="Digite seu nome" />
+        </div>
+      </div>
+
+      <button id="startGameBtn" class="start-btn">🚀 Iniciar Jogo</button>
+    </div>
+  </section>
+
+  <!-- ===== TELA DO JOGO ===== -->
+  <section id="game-screen" class="screen hidden">
+    <div class="game-header">
+      <div class="scoreboard">
+        <span id="player1Display">Player 1</span>
+        <span class="divider">x</span>
+        <span id="player2Display">Player 2</span>
+      </div>
+      <div id="turnIndicator" class="turn-indicator">👉 Vez do Jogador 1</div>
+      <div class="round-counter">Rodada: <span id="roundNumber">1</span>/5</div>
+    </div>
+
+    <div class="cards-area">
+      <!-- Jogador 1 -->
+      <div class="card">
+        <img id="foto-jogador" class="character-photo" src="" alt="" />
+        <h3 id="nome-jogador" class="card-name"></h3>
+        <div id="attr-jogador1" class="attributes"></div>
+      </div>
+
+      <!-- Jogador 2 -->
+      <div class="card">
+        <img id="foto-jogador2" class="character-photo" src="" alt="" />
+        <h3 id="nome-jogador2" class="card-name"></h3>
+        <div id="attr-jogador2" class="attributes"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MODAL DE RESULTADO ===== -->
+  <div id="modalResult" class="round-result hidden">
+    <div class="result-content">
+      <h2 id="resultMessage"></h2>
+      <button id="nextRoundBtn" class="next-round-btn">Próxima Rodada</button>
+    </div>
+  </div>
+
+  <div class="rotate-warning">
+  <img src="https://cdn-icons-png.flaticon.com/512/599/599502.png" alt="Gire o celular">
+  <p>Por favor, gire seu celular para o modo paisagem 🌟</p>
+</div>
+
+<script>
+  function checkOrientation() {
+    const warning = document.querySelector('.rotate-warning');
+    if (window.innerHeight > window.innerWidth && window.innerWidth < 900) {
+      warning.style.display = 'flex';
+    } else {
+      warning.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('resize', checkOrientation);
+  window.addEventListener('orientationchange', checkOrientation);
+  checkOrientation();
+</script>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
